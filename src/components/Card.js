@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Card.css"
+import { Link } from 'react-router-dom';
 
 const Card = ({item}) => {
   return (
@@ -13,12 +14,11 @@ const Card = ({item}) => {
       <div className="card-read">Read</div>
       <span className="card-tag card-circle subtle">C</span>
     </div>
-    <img src={item.recipe.image} alt="" className="card-media" />
+    <Link to={`/details/${item.recipe.uri.slice(("51"))}`}><img src={item.recipe.image} alt="" className="card-media" /></Link>
   </div>
   <div className="card-shadow" />
 </div>
-
-  )
+)
 }
 
 export default Card

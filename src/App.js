@@ -1,9 +1,12 @@
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Details from './components/Details';
 import Filter from './components/Filter';
 import List from './components/List';
+
 
 function App() {
   const [listOfRecette, setListOfRecette] = useState([])
@@ -31,9 +34,12 @@ const handleFilter = (e,search) => {
 }
   return (
     <div className="App">
-      <Filter handleFilter={handleFilter}/>
-      {loading ? <h1>Loading...</h1> :
-<List listOfRecette={listOfRecette}/>}
+      <Routes>
+        <Route path='/' element= { <div> <Filter handleFilter={handleFilter}/>
+                {loading ? <h1>Loading...</h1> :
+               <List listOfRecette={listOfRecette}/>}</div>} />
+        <Route path='/details/:id' element= {<Details />} />
+      </Routes>
     </div>
   );
 }
